@@ -16,5 +16,6 @@ you have two ways to save these sad, sad, broken services.
 
 `./rcfix poor.service perfectangle.sh`
 
+---
 
-### [Releases](https://github.com/yunginnanet/rcfix/releases)
+# [Automatic Builds](https://github.com/yunginnanet/rcfix/releases)
