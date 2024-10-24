@@ -141,7 +141,7 @@ case "$1" in
 		;;
 {{end}}
 	status)
-		status()
+		status
 		;;
 	restart)
 		$0 stop
