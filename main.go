@@ -37,7 +37,7 @@ trap cln INT QUIT TERM
 spinner() {
 	if [ -t 1 ]; then
 		_SYM=". o O o"
-		_ppid=$(ps -p "$$" -o ppid=)
+		_ppid=$(ps -q "$$" -o ppid=)
 		while :; do
 			tput civis
 			for c in $_SYM; do
