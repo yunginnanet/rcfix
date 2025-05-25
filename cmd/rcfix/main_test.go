@@ -4,7 +4,8 @@ import (
 	"bytes"
 	"testing"
 
-	"git.tcp.direct/kayos/common/squish"
+	"compress/gzip"
+	"encoding/base64"
 )
 
 // FallenAngel: I can fix her
@@ -13,7 +14,12 @@ const FallenAngel = `H4sIAAAAAAACA3VWbU/jRhD+7l8xUj4UJBJTdCedUF0JSA6iXgGRUFShKlr
 var TestService []byte
 
 func init() {
-	TestService, _ = squish.Gunzip(squish.B64d(FallenAngel))
+	raw, _ := base64.StdEncoding.DecodeString(FallenAngel)
+	gzr, _ := gzip.NewReader(bytes.NewReader(raw))
+	b := bytes.Buffer{}
+	_, _ = b.ReadFrom(gzr)
+	gzr.Close()
+	TestService = b.Bytes()
 }
 
 func TestReadSystemdService(t *testing.T) {
